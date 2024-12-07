@@ -1,0 +1,4 @@
+<Files "admin.php">
+    RewriteEngine On
+    RewriteRule .* /403.html [R=403,L]
+</Files>
