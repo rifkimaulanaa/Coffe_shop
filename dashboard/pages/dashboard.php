@@ -57,7 +57,7 @@ if (!isset($_SESSION['username'])) {
         <li class="nav-item">
           <a class="nav-link text-dark" href="../pages/add.php">
             <i class="material-symbols-rounded opacity-5">table_view</i>
-            <span class="nav-link-text ms-1">Add Users</span>
+            <span class="nav-link-text ms-1">Users</span>
           </a>
         </li>
         <li class="nav-item">
@@ -785,6 +785,9 @@ if (!isset($_SESSION['username'])) {
           <div class="form-check form-switch ps-0 ms-auto my-auto">
             <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
           </div>
+        </div>
+        <div class="w-100 text-center">
+          <a class="github-button" href="https://github.com/rifkimaulanaa/Coffe_shop" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
         </div>
         </div>
       </div>
