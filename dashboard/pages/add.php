@@ -4,6 +4,8 @@ include_once "../../proses/proses.php";
 
 if (!isset($_SESSION['status'])) {
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,11 +13,14 @@ if (!isset($_SESSION['status'])) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-  <title>
+  <link rel="apple-touch-icon" sizes="76x76" href="../../image/about-icon-2.png">
+  <link rel="icon" type="image/png" href="../../image/about-icon-2.png">
+  <title name="icon">
   Coffe Shop User 
   </title>
+
+  <link rel="icon" href="../../image/about-icon-2.png"
+        type="image/x-icon" />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
   <!-- Nucleo Icons -->
@@ -249,7 +254,7 @@ if (!isset($_SESSION['status'])) {
                         <p class="text-xs font-weight-bold mb-0"><?php echo $row['role']; ?></p>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <?php if($row['status'] == 'online') { ?>
+                        <?php if($row['last_activity'] == 'online') { ?>
                           <span class="badge badge-sm bg-gradient-success">Online</span>
                         <?php } else { ?>
                           <span class="badge badge-sm bg-gradient-secondary">Offline</span>
@@ -281,7 +286,7 @@ if (!isset($_SESSION['status'])) {
             </div>
             <div class="card-body px-0 pb-2">
               <div class="table-responsive p-0">
-                <table class="table align-items-center justify-content-center mb-0">
+                <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
@@ -289,8 +294,9 @@ if (!isset($_SESSION['status'])) {
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Description</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Category</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Stock</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Status</th>
-                      <th></th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -300,10 +306,10 @@ if (!isset($_SESSION['status'])) {
                       while($row = mysqli_fetch_assoc($result)) {
                     ?>
                     <tr>
-                      <td>
+                      <td class="align-middle text-center">
                         <span class="text-sm font-weight-bold mb-0"><?php echo $row['id']; ?></span>
                       </td>
-                      <td>
+                      <td class="align-middle">
                         <div class="d-flex px-2">
                           <div>
                           </div>
@@ -312,15 +318,23 @@ if (!isset($_SESSION['status'])) {
                           </div>
                         </div>
                       </td>
-                      <td>
+                      
+                      <td class="align-middle">
                         <p class="text-sm font-weight-bold mb-0">$<?php echo $row['price']; ?></p>
                       </td>
-                      <td class="pl-5">
+                      
+                      <td class="align-middle">
                         <span class="text-xs font-weight-bold"><?php echo $row['description']; ?></span>
                       </td>
+                      
                       <td class="align-middle text-center">
                         <span class="me-2 text-xs font-weight-bold"><?php echo $row['category']; ?></span>
                       </td>
+
+                      <td class="align-middle text-center">
+                        <span class="text-xs font-weight-bold d-block"><?php echo $row['stock']; ?></span>
+                      </td>
+
                       <td class="align-middle text-center">
                         <?php if($row['is_available'] == '1') { ?>
                           <span class="badge badge-sm bg-gradient-success">Available</span>
@@ -329,15 +343,36 @@ if (!isset($_SESSION['status'])) {
                         <?php } ?>
                       </td>
                       <td class="align-middle">
-                        <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-ellipsis-v text-xs"></i>
-                        </button>
+                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                          <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                          <button type="submit" class="btn btn-sm btn-danger" 
+                          onclick="return confirm('Yakin ingin menghapus produk ini?')">Hapus</button>
+                        </form>
                       </td>
                     </tr>
                     <?php } ?>
                   </tbody>
                 </table>
                 <!-- End Menu Table -->
+                <?php
+                  if(isset($_POST['id'])) {
+                    $id = $_POST['id'];
+                    $query = "DELETE FROM menu WHERE id = $id";
+                    $result = mysqli_query($conn, $query);
+                    if($result) {
+                      echo "<script>alert('Produk berhasil dihapus'); window.location.href='".$_SERVER['PHP_SELF']."';</script>";
+                    } else {
+                      echo "<script>alert('Gagal menghapus produk');</script>";
+                    }
+                  }
+                ?>
+
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
               </div>

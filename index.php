@@ -1,10 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coffee Shop</title>
+    <title name="icon">Coffee Shop</title>
+    <!-- add icon link -->
+    <link rel="icon" href="image/about-icon-2.png"
+        type="image/x-icon" />
 
     <!-- SWIPER -->
     <link
@@ -28,7 +32,6 @@
       <div id="menu-btn" class="fas fa-bars"></div>
 
       <a href="#home" class="logo">coffee Shop<i class="fas fa-mug-hot"></i></a>
-3
       <nav class="navbar">
         <a href="#home">home</a>
         <a href="#about">about</a>
@@ -41,6 +44,7 @@
         <button class="btn" onclick="window.location.href = 'dashboard/pages/sign-in.php'">
           Login
         </button>
+        <button class="btn" onclick="window.location.href = 'cart.php'"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
       </div>
     </header>
 
@@ -100,86 +104,48 @@
       </div>
     </section>
 
+    
     <!-- MENU -->
     <section class="menu" id="menu">
       <h1 class="heading">our menu <span>popular menu</span></h1>
 
       <div class="box-container">
+        <?php
+        require_once "proses/proses.php";
+        $query = "SELECT * FROM menu";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_assoc($result)) {
+        ?>
         <a href="#" class="box">
-          <img src="image/menu-1.png" alt="" />
+          <img src="image/menu-<?php echo $row['id']; ?>.png" class="menu-image" alt="" />
           <div class="content">
-            <h3>our special coffee</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur,
-              sed.
-            </p>
-            <span>$8.99</span>
+            <div class="name-price-container">
+              <h3><?php echo $row['name']; ?></h3>
+              <span class="price" style="display: inline-block ; margin-left: 47px"><?php echo '$' . $row['price']; ?></span>
+            </div>
+            <p><?php echo $row['description']; ?></p>
+            <button class="btn" data-id="<?php echo $row['id']; ?>">Add to Cart</button>
           </div>
         </a>
-
-        <a href="#" class="box">
-          <img src="image/menu-2.png" alt="" />
-          <div class="content">
-            <h3>our special coffee</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel,
-              fugit.
-            </p>
-            <span>$8.99</span>
-          </div>
-        </a>
-
-        <a href="#" class="box">
-          <img src="image/menu-3.png" alt="" />
-          <div class="content">
-            <h3>our special coffee</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptatibus, recusandae.
-            </p>
-            <span>$8.99</span>
-          </div>
-        </a>
-
-        <a href="#" class="box">
-          <img src="image/menu-4.png" alt="" />
-          <div class="content">
-            <h3>our special coffee</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse,
-              quas.
-            </p>
-            <span>$8.99</span>
-          </div>
-        </a>
-
-        <a href="#" class="box">
-          <img src="image/menu-5.png" alt="" />
-          <div class="content">
-            <h3>our special coffee</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia,
-              vitae.
-            </p>
-            <span>$8.99</span>
-          </div>
-        </a>
-
-        <a href="#" class="box">
-          <img src="image/menu-6.png" alt="" />
-          <div class="content">
-            <h3>our special coffee</h3>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde,
-              expedita!
-            </p>
-            <span>$8.99</span>
-          </div>
-        </a>
+        <?php
+        }
+        ?>
       </div>
+      <style>
+        .name-price-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .price {
+          font-weight: bold;
+          
+        }
+      </style>
     </section>
     <!-- END MENU -->
 
+   
     <!-- REVIEW -->
     <section class="review" id="review">
       <h1 class="heading">reviews <span>what people says</span></h1>
@@ -340,3 +306,4 @@
     <script src="js/script.js"></script>
   </body>
 </html>
+

@@ -62,19 +62,24 @@ section {
     cursor: pointer;
     font-size: 1.7rem;
     margin-top: 0;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .button-container {
-    display: flex;           /* Menggunakan flexbox untuk menyusun tombol */
-    justify-content: flex-end; /* Menempatkan tombol di sisi kanan */
-    gap: 10px;               /* Memberikan jarak antar tombol */
-    align-items: center;     /* Memastikan tombol sejajar secara vertikal */
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    align-items: center;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .btn:hover {
     border-radius: var(--border-radius-hover);
     border: var(--border-hover);
 }
+
 
 /* HEADER */
 

@@ -18,11 +18,13 @@ if (!isset($_SESSION['username'])) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-  <title>
+  <link rel="apple-touch-icon" sizes="76x76" href="../../image/about-icon-2.png">
+  <link rel="icon" type="image/png" href="../../image/about-icon-2.png">
+  <title name="icon">
     Coffe Shop Dashboard
   </title>
+  <link rel="icon" href="../../image/about-icon-2.png"
+        type="image/x-icon" />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
   <!-- Nucleo Icons -->
@@ -61,7 +63,7 @@ if (!isset($_SESSION['username'])) {
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="../pages/add_menu.php">
+          <a class="nav-link text-dark" href="../pages/create.php">
             <i class="material-symbols-rounded opacity-5">format_textdirection_r_to_l</i>
             <span class="nav-link-text ms-1">Add Menu</span>
           </a>
