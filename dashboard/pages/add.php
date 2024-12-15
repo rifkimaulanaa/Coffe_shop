@@ -225,6 +225,8 @@ if (!isset($_SESSION['status'])) {
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Role</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Register</th>
+                      <th class="text-start text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
+
                     </tr>
                   </thead>
                   <tbody>
@@ -263,6 +265,13 @@ if (!isset($_SESSION['status'])) {
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold"><?php echo $row['created_at']; ?></span>
                       </td>
+                      <td class="align-middle">
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" style="display: inline;">
+                          <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                          <button type="submit" class="btn btn-sm btn-danger me-2" onclick="return confirm('Yakin ingin menghapus user ini?')">Hapus</button>
+                        </form>
+                        <a href="edit_user.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning me-2">Edit</a>
+                      </td>
                     </tr>
                     <?php } ?>
                   </tbody>
@@ -272,6 +281,19 @@ if (!isset($_SESSION['status'])) {
           </div>
         </div>
       </div>
+
+                          <?php
+                          if(isset($_POST['id'])) {
+                            $id = $_POST['id'];
+                            $query = "DELETE FROM users WHERE id = $id";
+                            $result = mysqli_query($conn, $query);
+                            if($result) {
+                              echo "<script>alert('User berhasil dihapus'); window.location.href='".$_SERVER['PHP_SELF']."';</script>";
+                            } else {
+                              echo "<script>alert('Gagal menghapus user: ".mysqli_error($conn)."');</script>";
+                            }
+                          }
+                        ?>
       <!-- end table users -->
 
       
@@ -343,10 +365,12 @@ if (!isset($_SESSION['status'])) {
                         <?php } ?>
                       </td>
                       <td class="align-middle">
+                        
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                           <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                           <button type="submit" class="btn btn-sm btn-danger" 
                           onclick="return confirm('Yakin ingin menghapus produk ini?')">Hapus</button>
+                          <a href="edit_menu.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">Edit</a>
                         </form>
                       </td>
                     </tr>

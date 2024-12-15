@@ -63,7 +63,7 @@
                     $update_stmt->bind_param('si', $new_image_name, $last_id);
 
                     if ($update_stmt->execute()) {
-                        echo "<script>alert('Data Berhasil di Inputkan'); window.location.href='add_menu.php';</script>";
+                        echo "<script>alert('Data Berhasil di Inputkan'); window.location.href='add.php';</script>";
                     } else {
                         echo "<script>alert('Data Gagal diupdate: " . $update_stmt->error . "');</script>";
                     }
