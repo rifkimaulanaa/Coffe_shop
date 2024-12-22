@@ -19,7 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('Location: dashboard.php');
         exit();
     } else {
-        echo "Username atau password salah!";
+      $message = "Username atau password salah!";
+      echo "<script>alert('$message');</script>";
     }
 }
 ?>
@@ -29,8 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coffe Shop</title>
+    <title name="icon">Coffe Shop</title>
     <link
       rel="stylesheet"
       href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -39,6 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       rel="stylesheet"
       href="https://unpkg.com/bs-brain@2.0.4/components/logins/login-9/assets/css/login-9.css"
     />
+
+    <link rel="icon" href="image/about-icon-2.png" type="image/x-icon" />
 
     <style>
       .custom-section {
@@ -81,17 +85,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                   alt="BootstrapBrain Logo"
                 />
                 <hr class="border-primary-subtle mb-4" />
-                <h2 class="h1 mb-4">
+                <h2 class="h1 mb-4" style="color: #786C3B;">
                   We make digital products that drive you to stand out.
                 </h2>
-
-                <style>
-                  h2 {
-                    font-size: 2.2rem;
-                    color: var(--main-color);
-                    line-height: 1.8;
-                  }
-                </style>
 
                 <p class="lead mb-5">what's make our coffee special!</p>
 

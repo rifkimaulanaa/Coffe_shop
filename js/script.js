@@ -39,3 +39,22 @@ var swiper = new Swiper(".review-slider", {
         }
     },
 });
+
+// Toggle class active untuk hamburger menu
+const navbarNav = document.querySelector('.navbar-nav');
+// ketika hamburger menu di klik
+document.querySelector('#hamburger-menu').onclick = () => {
+  navbarNav.classList.toggle('active');
+};
+
+const sc = document.querySelector('#shopping-cart-button');
+if (!sc.contains(e.target) && !shoppingCart.contains(e.target)) {
+    shoppingCart.classList.remove('active');
+  };
+
+// Toggle class active untuk shopping cart
+const shoppingCart = document.querySelector('.shopping-cart');
+document.querySelector('#shopping-cart-button').onclick = (e) => {
+  shoppingCart.classList.toggle('active');
+  e.preventDefault();
+};

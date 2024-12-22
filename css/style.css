@@ -575,6 +575,7 @@ section {
         margin-top: 6rem;
         flex-flow: column;
         text-align: center;
+        align-items: center;
     }
 
     .menu .box-container .box img {

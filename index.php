@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title name="icon">Coffee Shop</title>
     <!-- add icon link -->
-    <link rel="icon" href="image/about-icon-2.png"
-        type="image/x-icon" />
+    <link rel="icon" href="image/about-icon-2.png" type="image/x-icon" />
 
     <!-- SWIPER -->
     <link
@@ -37,14 +35,16 @@
         <a href="#about">about</a>
         <a href="#menu">menu</a>
         <a href="#review">review</a>
+
+ 
       </nav>
 
       <div class="button-container">
-        <button class="btn">Book A Table</button>
-        <button class="btn" onclick="window.location.href = 'dashboard/pages/sign-in.php'">
+        <a href="#book" class="btn">Book A Table</a>
+        <a class="btn" onclick="window.location.href = 'dashboard/pages/sign-in.php'">
           Login
-        </button>
-        <button class="btn" onclick="window.location.href = 'cart.php'"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+        </a>
+        <a href="#" class="btn" id="shopping-cart-button"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
       </div>
     </header>
 
@@ -104,7 +104,6 @@
       </div>
     </section>
 
-    
     <!-- MENU -->
     <section class="menu" id="menu">
       <h1 class="heading">our menu <span>popular menu</span></h1>
@@ -139,13 +138,11 @@
         }
         .price {
           font-weight: bold;
-          
         }
       </style>
     </section>
     <!-- END MENU -->
 
-   
     <!-- REVIEW -->
     <section class="review" id="review">
       <h1 class="heading">reviews <span>what people says</span></h1>
