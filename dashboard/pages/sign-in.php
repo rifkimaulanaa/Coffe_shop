@@ -3,25 +3,31 @@ session_start();
 require_once '../../proses/proses.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
+  $username = mysqli_real_escape_string($conn, $_POST['username']);
+  $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-    // Pastikan password di database dienkripsi
-    $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-    $result = mysqli_query($conn, $query);
+  // Pastikan password di database dienkripsi
+  $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+  $result = mysqli_query($conn, $query);
 
-    if (mysqli_num_rows($result) > 0) {
-        $user = mysqli_fetch_assoc($result);
+  if (mysqli_num_rows($result) > 0) {
+    $user = mysqli_fetch_assoc($result);
 
-        // Simpan username ke session
-        $_SESSION['username'] = $user['username'];
+    // Simpan username ke session
+    $_SESSION['username'] = $user['username'];
+    $_SESSION['role'] = $user['role'];
 
-        header('Location: dashboard.php');
-        exit();
+    // Redirect berdasarkan role
+    if ($user['role'] == 'admin') {
+      header('Location: dashboard.php');
     } else {
-      $message = "Username atau password salah!";
-      echo "<script>alert('$message');</script>";
+      header('Location: user_dashboard.php');
     }
+    exit();
+  } else {
+    $message = "Username atau password salah!";
+    echo "<script>alert('$message');</script>";
+  }
 }
 ?>
 

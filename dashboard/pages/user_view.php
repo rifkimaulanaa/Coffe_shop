@@ -58,18 +58,6 @@ if (!isset($_SESSION['status'])) {
             <span class="nav-link-text ms-1">Users</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="../pages/add_menu.php">
-            <i class="material-symbols-rounded opacity-5">format_textdirection_r_to_l</i>
-            <span class="nav-link-text ms-1">Add Menu</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="../pages/add_user.php">
-            <i class="material-symbols-rounded opacity-5">format_textdirection_r_to_l</i>
-            <span class="nav-link-text ms-1">Add User</span>
-          </a>
-        </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-dark font-weight-bolder opacity-5">Account pages</h6>
         </li>
@@ -225,7 +213,6 @@ if (!isset($_SESSION['status'])) {
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Role</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Register</th>
-                      <th class="text-start text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
 
                     </tr>
                   </thead>
@@ -268,9 +255,6 @@ if (!isset($_SESSION['status'])) {
                       <td class="align-middle">
                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" style="display: inline;">
                           <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                          <button type="submit" class="btn btn-sm btn-danger me-2" onclick="return confirm('Yakin ingin menghapus user ini?')">Hapus</button>
-                        </form>
-                        <a href="edit_user.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning me-2">Edit</a>
                       </td>
                     </tr>
                     <?php } ?>
@@ -318,7 +302,6 @@ if (!isset($_SESSION['status'])) {
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Category</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Stock</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Status</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -368,9 +351,6 @@ if (!isset($_SESSION['status'])) {
                         
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                           <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                          <button type="submit" class="btn btn-sm btn-danger" 
-                          onclick="return confirm('Yakin ingin menghapus produk ini?')">Hapus</button>
-                          <a href="edit_menu.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">Edit</a>
                         </form>
                       </td>
                     </tr>
